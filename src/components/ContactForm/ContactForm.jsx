@@ -12,7 +12,7 @@ const { validName: { checkName, messageName }, validNum: { checkNum, messageNum 
         checkNum: /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
         messageNum: 'Phone number must be digits',
     },
-}
+};
 
 const schema = yup.object().shape({
     name: yup.string().matches(checkName, messageName).required('Name is required'),
@@ -26,7 +26,6 @@ const initialValues = {
 
 const ContactForm = ({onSubmit}) => {
     const handleSubmit = (values, {resetForm}) => {
-
         onSubmit(values);
         resetForm();
     };
