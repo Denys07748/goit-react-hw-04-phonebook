@@ -36,7 +36,6 @@ const App = () => {
   };
 
   const getVisibleContacts = useMemo(() => {
-    console.log('визов фильтр' + Date.now());
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(({name}) => 
