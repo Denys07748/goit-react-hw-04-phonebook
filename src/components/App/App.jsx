@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import {Container, TitleMain, TitleSec} from './App.styled'
 import ContactForm from 'components/ContactForm/ContactForm';
@@ -32,16 +32,17 @@ const App = () => {
   };
 
   const changeFilter = e => {
-    setFilter({filter: e.currentTarget.value})
+    setFilter(e.currentTarget.value)
   };
 
-  const getVisibleContacts = () => {
+  const getVisibleContacts = useMemo(() => {
+    console.log('визов фильтр' + Date.now());
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(({name}) => 
       name.toLowerCase().includes(normalizedFilter)
     );
-  };
+  },[contacts, filter]);
 
   const deleteContact = contactId => {
     setContacts(state => state.filter(({id}) => id !== contactId));
