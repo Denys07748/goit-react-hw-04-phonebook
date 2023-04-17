@@ -56,11 +56,21 @@ const App = () => {
         />
 
         <TitleSec>Contacts</TitleSec>
-        <Filter value={filter} onChange={changeFilter}/>
-        <ContactList contacts={getVisibleContacts()} onDeleteContact={deleteContact} />
+        {contacts.length === 0 ? (
+            <p>There are no contacts in your phone book yet. Please add contacts.</p>
+          ) : (
+            <>
+              <Filter value={filter} onChange={changeFilter}/>
+              {getVisibleContacts().length === 0 ? (
+                <p>Сontacts not found</p>
+                ) : (
+                <ContactList contacts={getVisibleContacts()} onDeleteContact={deleteContact}/>
+                )}
+            </>
+          )}
+        {/* <ToastContainer autoClose={3000} theme="colored"/> */}
       </Container>
     );
-  
 };
 
 export default App;

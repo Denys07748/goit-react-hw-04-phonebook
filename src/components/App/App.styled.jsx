@@ -18,6 +18,13 @@ export const Container = styled.div`
     button {
         cursor: pointer;
     }
+
+    p {
+       font-size: 20px;
+       max-width: 340px; 
+       text-align: left;
+       line-height: 1.5;
+    }
 `;
 
 export const TitleMain = styled.h1`
